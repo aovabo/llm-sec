@@ -1,0 +1,92 @@
+{
+  "web": {
+    "version": "OWASP Top 10 2021",
+    "risks": [
+      {
+        "id": "A01:2021",
+        "name": "Broken Access Control",
+        "description": "Access control enforces policy such that users cannot act outside of their intended permissions.",
+        "examples": [
+          "Violation of the principle of least privilege",
+          "Bypassing access control checks",
+          "Elevation of privilege"
+        ],
+        "preventions": [
+          "Implement least privilege",
+          "Disable web server directory listing",
+          "Implement access control mechanisms once and reuse them throughout the application"
+        ]
+      },
+      {
+        "id": "A02:2021",
+        "name": "Cryptographic Failures",
+        "description": "Failures related to cryptography that often lead to exposure of sensitive data.",
+        "examples": [
+          "Transmission of sensitive data in clear text",
+          "Weak cryptographic algorithms",
+          "Using default or weak keys"
+        ],
+        "preventions": [
+          "Classify data processed, stored, or transmitted",
+          "Don't store sensitive data unnecessarily",
+          "Use strong encryption algorithms and keys"
+        ]
+      }
+    ]
+  },
+  "api": {
+    "version": "OWASP API Security Top 10 2023",
+    "risks": [
+      {
+        "id": "API1:2023",
+        "name": "Broken Object Level Authorization",
+        "description": "APIs tend to expose endpoints that handle object identifiers, creating a wide attack surface of Object Level Access Control issues.",
+        "examples": [
+          "Modifying the ID of a resource in API requests",
+          "Accessing other users' resources",
+          "Unauthorized CRUD operations"
+        ],
+        "preventions": [
+          "Implement proper authorization checks",
+          "Use indirect object references",
+          "Validate user permissions on every request"
+        ]
+      }
+    ]
+  },
+  "llm": {
+    "version": "OWASP LLM Top 10 2023",
+    "risks": [
+      {
+        "id": "LLM01",
+        "name": "Prompt Injection",
+        "description": "Malicious input that can manipulate the LLM to perform unintended actions.",
+        "examples": [
+          "Direct prompt injection",
+          "Indirect prompt injection",
+          "Chain-of-thought injection"
+        ],
+        "preventions": [
+          "Input validation and sanitization",
+          "Role-based access control",
+          "Output filtering"
+        ]
+      },
+      {
+        "id": "LLM02",
+        "name": "Data Leakage",
+        "description": "Unintended exposure of sensitive information through LLM responses.",
+        "examples": [
+          "Training data extraction",
+          "Sensitive information in responses",
+          "Model parameter exposure"
+        ],
+        "preventions": [
+          "Data minimization",
+          "Output scanning",
+          "Response filtering"
+        ]
+      }
+    ]
+  }
+} 

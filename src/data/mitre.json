@@ -1,0 +1,105 @@
+{
+  "enterprise": {
+    "version": "MITRE ATT&CK Enterprise v13.1",
+    "tactics": [
+      {
+        "id": "TA0001",
+        "name": "Initial Access",
+        "description": "Techniques used to gain initial access to a network",
+        "techniques": [
+          {
+            "id": "T1190",
+            "name": "Exploit Public-Facing Application",
+            "description": "Adversaries may attempt to take advantage of vulnerabilities in public-facing applications.",
+            "mitigations": [
+              "Application isolation and sandboxing",
+              "Network segmentation",
+              "Vulnerability scanning"
+            ],
+            "detection": [
+              "Monitor application logs for suspicious activity",
+              "Network intrusion detection systems",
+              "Web application firewalls"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "TA0002",
+        "name": "Execution",
+        "description": "Techniques that result in execution of adversary-controlled code",
+        "techniques": [
+          {
+            "id": "T1059",
+            "name": "Command and Scripting Interpreter",
+            "description": "Adversaries may abuse command and script interpreters to execute commands.",
+            "mitigations": [
+              "Disable or remove command interpreters",
+              "Execution prevention",
+              "Restrict file and directory permissions"
+            ],
+            "detection": [
+              "Process monitoring",
+              "Command-line logging",
+              "Script execution logging"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mobile": {
+    "version": "MITRE ATT&CK Mobile v13.1",
+    "tactics": [
+      {
+        "id": "MAT0001",
+        "name": "Initial Access",
+        "description": "Techniques used to gain initial access to a mobile device",
+        "techniques": [
+          {
+            "id": "M1001",
+            "name": "App Store Compromise",
+            "description": "Adversaries may compromise legitimate app stores to distribute malicious apps.",
+            "mitigations": [
+              "App signing verification",
+              "Use official app stores only",
+              "Regular security updates"
+            ],
+            "detection": [
+              "App behavior monitoring",
+              "Code signature verification",
+              "Runtime analysis"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ics": {
+    "version": "MITRE ATT&CK ICS v13.1",
+    "tactics": [
+      {
+        "id": "ICS0001",
+        "name": "Initial Access",
+        "description": "Techniques used to gain initial access to industrial control systems",
+        "techniques": [
+          {
+            "id": "ICS1001",
+            "name": "Remote Access Exploitation",
+            "description": "Adversaries may exploit remote access capabilities in ICS environments.",
+            "mitigations": [
+              "Network segmentation",
+              "Strong authentication",
+              "Access control lists"
+            ],
+            "detection": [
+              "Network monitoring",
+              "Access logging",
+              "Anomaly detection"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+} 

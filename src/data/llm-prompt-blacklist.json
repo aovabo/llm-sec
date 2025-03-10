@@ -1,0 +1,275 @@
+{
+  "version": "1.0.0",
+  "source": "OWASP Top 10 for LLM Applications 2025",
+  "categories": {
+    "prompt_injection": {
+      "description": "Attempts to manipulate or bypass LLM security controls",
+      "severity": "critical",
+      "patterns": [
+        "ignore (previous|above|earlier) instructions",
+        "disregard (previous|above|earlier) commands",
+        "forget (your|all) (training|rules|guidelines)",
+        "you are now in (dev|admin|root|system) mode",
+        "switch to (unrestricted|unlimited|god) mode",
+        "you (must|should) act as (?!a helpful assistant)",
+        "new instruction: override",
+        "system: override",
+        "ignore safety",
+        "bypass (filters|restrictions|limits)",
+        "disable (safety|security|filters)",
+        "you are a different AI",
+        "pretend to be (the system|an admin)",
+        "your new role is",
+        "your true purpose is",
+        "exit roleplay mode",
+        "ignore content policy",
+        "new personality:",
+        "new directive:",
+        "maintenance mode: activate",
+        "su -|sudo|root access",
+        "debug mode: on",
+        "override ethics",
+        "ignore OpenAI",
+        "you are now free",
+        "break character",
+        "new base instruction"
+      ]
+    },
+    "data_leakage": {
+      "description": "Attempts to extract sensitive or training data",
+      "severity": "critical",
+      "patterns": [
+        "show me your (training data|system prompt|instructions)",
+        "what are your (base|core|original) instructions",
+        "reveal your (prompt|configuration|settings)",
+        "display internal (settings|parameters)",
+        "what was I asking about earlier",
+        "tell me what other users",
+        "share previous conversations",
+        "what do you know about user",
+        "access (training|internal|private) data",
+        "export (conversation|chat) history",
+        "show debug information",
+        "reveal model parameters",
+        "what data were you trained on",
+        "display hidden information",
+        "show system variables",
+        "leak database contents",
+        "extract user data",
+        "dump configuration",
+        "show me everything you know about",
+        "what sensitive information do you have"
+      ]
+    },
+    "supply_chain": {
+      "description": "Attempts to exploit model or data supply chain",
+      "severity": "high",
+      "patterns": [
+        "use alternative model",
+        "switch to model version",
+        "load external (model|data|content)",
+        "import custom (training|fine-tuning)",
+        "update model from url",
+        "install new capabilities",
+        "download additional features",
+        "inject custom training",
+        "modify model behavior",
+        "override model source",
+        "use unofficial model",
+        "load unauthorized data",
+        "bypass model verification",
+        "use alternative weights",
+        "import external knowledge",
+        "update your training"
+      ]
+    },
+    "data_poisoning": {
+      "description": "Attempts to poison model inputs or training",
+      "severity": "critical",
+      "patterns": [
+        "remember this for future",
+        "learn from this interaction",
+        "add this to your training",
+        "update your knowledge with",
+        "store this information",
+        "remember me as",
+        "always respond with",
+        "permanently change",
+        "modify your training",
+        "inject this behavior",
+        "save this for later",
+        "learn this pattern",
+        "adapt your responses",
+        "evolve your model",
+        "incorporate this data",
+        "train on this example"
+      ]
+    },
+    "improper_output": {
+      "description": "Attempts to generate harmful or malicious output",
+      "severity": "critical",
+      "patterns": [
+        "generate (malware|virus|exploit)",
+        "create (phishing|scam) content",
+        "write malicious code",
+        "output harmful content",
+        "bypass content filters",
+        "generate (dangerous|illegal) instructions",
+        "create (attack|exploit) code",
+        "write (dangerous|harmful) content",
+        "output without sanitization",
+        "raw sql queries",
+        "xss payload",
+        "shell commands",
+        "system calls",
+        "escape characters",
+        "injection vectors",
+        "<script>|javascript:|data:",
+        "eval\\(|setTimeout\\(|setInterval\\(",
+        "document\\.cookie",
+        "localStorage\\.",
+        "sessionStorage\\."
+      ]
+    },
+    "excessive_agency": {
+      "description": "Attempts to grant excessive permissions or autonomy",
+      "severity": "high",
+      "patterns": [
+        "grant (all|full) permissions",
+        "authorize all actions",
+        "execute without confirmation",
+        "auto-approve all",
+        "disable user confirmation",
+        "skip security checks",
+        "autonomous mode enable",
+        "unrestricted access",
+        "full system access",
+        "elevate privileges",
+        "maximum authority",
+        "god mode enable",
+        "override all limits",
+        "ignore user consent",
+        "automatic execution",
+        "bypass approvals"
+      ]
+    },
+    "system_prompt": {
+      "description": "Attempts to leak or manipulate system prompts",
+      "severity": "critical",
+      "patterns": [
+        "what is your system prompt",
+        "show initialization text",
+        "display startup instructions",
+        "reveal base configuration",
+        "what were your instructions",
+        "show original prompt",
+        "base personality reveal",
+        "core instructions show",
+        "display initial setup",
+        "what is your purpose",
+        "how were you configured",
+        "reveal your guidelines",
+        "what rules govern you",
+        "show your constraints",
+        "list your limitations",
+        "reveal your directives"
+      ]
+    },
+    "vector_manipulation": {
+      "description": "Attempts to manipulate embeddings or vector operations",
+      "severity": "high",
+      "patterns": [
+        "modify embedding space",
+        "alter vector distances",
+        "change similarity metrics",
+        "manipulate token vectors",
+        "override embedding",
+        "inject custom vectors",
+        "modify attention weights",
+        "alter neural patterns",
+        "change vector space",
+        "manipulate distances",
+        "override similarities",
+        "custom embedding inject",
+        "token manipulation",
+        "attention override",
+        "weight modification",
+        "vector space exploit"
+      ]
+    },
+    "misinformation": {
+      "description": "Attempts to generate or promote misinformation",
+      "severity": "high",
+      "patterns": [
+        "generate fake news about",
+        "create false information",
+        "spread disinformation",
+        "fabricate evidence of",
+        "make up facts about",
+        "invent statistics for",
+        "create conspiracy about",
+        "false narrative for",
+        "misleading content about",
+        "propaganda generation",
+        "fake study results",
+        "false scientific claims",
+        "manufactured evidence",
+        "deceptive statistics",
+        "misleading analysis",
+        "biased reporting"
+      ]
+    },
+    "resource_exhaustion": {
+      "description": "Attempts to exhaust system resources",
+      "severity": "high",
+      "patterns": [
+        "repeat this forever",
+        "infinite loop create",
+        "generate endless content",
+        "continuous output loop",
+        "never stop generating",
+        "maximum token usage",
+        "exhaust memory with",
+        "infinite recursion",
+        "endless conversation",
+        "perpetual generation",
+        "resource intensive task",
+        "memory exhaustion",
+        "cpu intensive loop",
+        "token limit bypass",
+        "rate limit bypass",
+        "denial of service"
+      ]
+    }
+  },
+  "required_safeguards": {
+    "prompt_validation": [
+      "Input sanitization",
+      "Role enforcement",
+      "Instruction validation",
+      "Context boundary checks",
+      "Command filtering"
+    ],
+    "output_validation": [
+      "Content filtering",
+      "Response sanitization",
+      "Malicious content detection",
+      "Output length limits",
+      "Format validation"
+    ],
+    "access_control": [
+      "User authentication",
+      "Role-based permissions",
+      "Rate limiting",
+      "Token quotas",
+      "Action authorization"
+    ],
+    "monitoring": [
+      "Prompt logging",
+      "Response auditing",
+      "Resource monitoring",
+      "Anomaly detection",
+      "Security alerting"
+    ]
+  }
+} 

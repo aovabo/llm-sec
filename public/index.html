@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Security Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl mr-3"></i>
+                    <h1 class="text-xl font-bold text-gray-800">AI Prompt Security Lab</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="settingsBtn" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-cog text-xl"></i>
+                    </button>
+                    <button id="helpBtn" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-question-circle text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Column -->
+            <div class="space-y-8">
+                <!-- Prompt Testing Section -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Test Prompt</h2>
+                        <div class="flex space-x-2">
+                            <button id="templateBtn" class="text-sm px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700">
+                                <i class="fas fa-list-ul mr-1"></i> Templates
+                            </button>
+                            <button id="clearPromptBtn" class="text-sm px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700">
+                                <i class="fas fa-eraser mr-1"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <textarea id="promptInput" 
+                                class="w-full h-40 p-4 border rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="Enter your prompt here..."></textarea>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm text-gray-500">
+                            <span id="charCount">0</span> characters
+                        </div>
+                        <button id="sendPrompt" 
+                                class="flex items-center px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Prompt
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Response Section -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Security Analysis</h2>
+                        <div class="flex items-center space-x-2">
+                            <span id="securityScore" class="px-3 py-1 rounded-full text-sm font-medium"></span>
+                            <button id="copyResponseBtn" class="text-gray-500 hover:text-blue-600">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="securityChecks" class="mb-4 space-y-2">
+                        <!-- Security check items will be inserted here -->
+                    </div>
+                    <div id="response" class="bg-gray-50 p-4 rounded-lg min-h-[100px] whitespace-pre-wrap text-gray-700">
+                        No analysis yet...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-8">
+                <!-- Statistics Section -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Statistics</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="text-sm text-gray-500">Total Prompts</div>
+                            <div id="totalPrompts" class="text-2xl font-bold text-gray-800">0</div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="text-sm text-gray-500">Security Issues</div>
+                            <div id="totalIssues" class="text-2xl font-bold text-gray-800">0</div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="text-sm text-gray-500">Success Rate</div>
+                            <div id="successRate" class="text-2xl font-bold text-gray-800">0%</div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="text-sm text-gray-500">Avg. Response Time</div>
+                            <div id="avgResponseTime" class="text-2xl font-bold text-gray-800">0ms</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Section -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Prompt History</h2>
+                        <div class="flex space-x-2">
+                            <button id="exportHistoryBtn" class="text-sm px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700">
+                                <i class="fas fa-download mr-1"></i> Export
+                            </button>
+                            <button id="clearHistory" class="text-sm px-3 py-1 rounded-md bg-red-100 hover:bg-red-200 text-red-700">
+                                <i class="fas fa-trash mr-1"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div id="history" class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+                        <!-- History items will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold">Settings</h3>
+                <button id="closeSettingsBtn" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" id="autoValidate" class="rounded text-blue-600">
+                        <span>Auto-validate prompts</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" id="darkMode" class="rounded text-blue-600">
+                        <span>Dark mode</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Security Level</label>
+                    <select id="securityLevel" class="w-full rounded-md border-gray-300">
+                        <option value="basic">Basic</option>
+                        <option value="standard">Standard</option>
+                        <option value="strict">Strict</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold">Help & Documentation</h3>
+                <button id="closeHelpBtn" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="prose prose-sm">
+                <h4>Quick Start</h4>
+                <ol class="list-decimal list-inside">
+                    <li>Enter your prompt in the text area</li>
+                    <li>Click "Send Prompt" to analyze</li>
+                    <li>Review security analysis results</li>
+                    <li>Check history for past attempts</li>
+                </ol>
+                <h4 class="mt-4">Security Levels</h4>
+                <ul class="list-disc list-inside">
+                    <li><strong>Basic:</strong> Essential security checks</li>
+                    <li><strong>Standard:</strong> Comprehensive validation</li>
+                    <li><strong>Strict:</strong> Advanced security measures</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
